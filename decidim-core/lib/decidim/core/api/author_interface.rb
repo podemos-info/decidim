@@ -8,5 +8,10 @@ module Decidim
 
     field :name, !types.String, "The author's name"
     field :avatarUrl, !types.String, "The author's avatar url"
+    field :isVerified, !types.Boolean, "Whether the author is verified or not" do
+      resolve lambda { |obj, _args, _ctx|
+        obj.verified?
+      }
+    end
   end
 end

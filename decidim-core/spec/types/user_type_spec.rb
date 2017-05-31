@@ -17,6 +17,20 @@ module Decidim
       end
     end
 
+    describe "isAuthorized" do
+      let(:query) { "{ isAuthorized }" }
+
+      it "returns false when not authorized" do
+        allow(model).to receive(:authorized?).and_return false
+        expect(response).to include("isAuthorized" => false)
+      end
+
+      it "returns true when authorized" do
+        allow(model).to receive(:authorized?).and_return true
+        expect(response).to include("isAuthorized" => true)
+      end
+    end
+
     describe "avatarUrl" do
       let(:query) { "{ avatarUrl }" }
 

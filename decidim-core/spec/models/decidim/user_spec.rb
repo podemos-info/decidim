@@ -33,6 +33,24 @@ module Decidim
       end
     end
 
+    describe "verified?" do
+      context "with authorizations" do
+        let(:user) { create(:authorization).user }
+
+        it "returns true" do
+          expect(user.verified?).to eq(true)
+        end
+      end
+
+      context "without authorizations" do
+        let(:user) { create(:user) }
+
+        it "returns true" do
+          expect(user.verified?).to eq(false)
+        end
+      end
+    end
+
     describe "name" do
       context "when it has a name" do
         let(:user) { build(:user, name: "Oriol") }

@@ -51,6 +51,10 @@ module Decidim
       roles.include?(role.to_s)
     end
 
+    def verified?
+      authorizations.any?
+    end
+
     def name
       super || I18n.t("decidim.anonymous_user")
     end

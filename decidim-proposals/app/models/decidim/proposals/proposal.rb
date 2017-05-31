@@ -28,6 +28,10 @@ module Decidim
         user_group&.name || author&.name || I18n.t("decidim.proposals.models.proposal.fields.official_proposal")
       end
 
+      def author_verified?
+        (user_group || author).try(:verified?)
+      end
+
       def author_avatar_url
         author&.avatar&.url || ActionController::Base.helpers.asset_path("decidim/default-avatar.svg")
       end

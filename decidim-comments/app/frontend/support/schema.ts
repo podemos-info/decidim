@@ -106,6 +106,8 @@ export interface CommentDataFragment extends UpVoteButtonFragment, DownVoteButto
     name: string,
     // The author's avatar url
     avatarUrl: string,
+    // Wether the author is verified or not
+    isVerified: boolean,
   };
   // Check if the commentable has comments
   hasComments: boolean;

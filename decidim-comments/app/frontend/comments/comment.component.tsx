@@ -76,6 +76,11 @@ class Comment extends React.Component<CommentProps, CommentState> {
                   <img src={author.avatarUrl} alt="author-avatar" />
                 </a>
                 <a className="author__name">{author.name}</a>
+                { author.isVerified &&
+                  <span>&nbsp;
+                    <Icon name="icon-check" iconExtraClassName="icon--small" />
+                  </span>
+                }
                 <time dateTime={createdAt}>{formattedCreatedAt}</time>
               </div>
             </div>

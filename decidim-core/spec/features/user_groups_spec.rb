@@ -22,9 +22,15 @@ describe "User groups", type: :feature, perform_enqueued: true do
       expect(page).to have_content(user_group.name)
       expect(page).to have_content("Not verified")
     end
+
+    describe "#verified?" do
+      it "returns false" do
+        expect(user_group.verified?).to eq(false)
+      end
+    end
   end
 
-  context "when the user group is not verified" do
+  context "when the user group is verified" do
     before do
       user_group.verify!
     end
@@ -37,6 +43,12 @@ describe "User groups", type: :feature, perform_enqueued: true do
       expect(page).to have_content(user_group.name)
       expect(page).not_to have_content("Not verified")
       expect(page).to have_content("Verified")
+    end
+
+    describe "#verified?" do
+      it "returns true" do
+        expect(user_group.verified?).to eq(true)
+      end
     end
   end
 end
