@@ -338,6 +338,7 @@ describe "Authentication", type: :feature, perform_enqueued: true do
       it "authenticates an existing User" do
         find(".sign-in-link").click
 
+        screenshot_and_open_image
         click_link "Sign in with Facebook"
 
         expect(page).to have_content("Successfully")
