@@ -20,7 +20,7 @@ module Decidim
 
     ROLES = %w(admin moderator collaborator official).freeze
 
-    validates :organization, :name, presence: true
+    validates :name, presence: true
     validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }, allow_blank: true
     validates :tos_agreement, acceptance: true, allow_nil: false, on: :create
     validates :avatar, file_size: { less_than_or_equal_to: MAXIMUM_AVATAR_FILE_SIZE }
