@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "database_cleaner", "~> 1.6.0"
   s.add_dependency "capybara", "~> 2.14.0"
   s.add_dependency "capybara-screenshot", "~> 1.0.14"
-  s.add_dependency "rspec-rails", "~> 3.5"
+  s.add_dependency "rspec-rails", "~> 3.5.2"
   s.add_dependency "rspec-repeat", "~> 1.0.2"
   s.add_dependency "byebug"
   s.add_dependency "wisper-rspec", "~> 0.0.3"
@@ -36,4 +36,5 @@ Gem::Specification.new do |s|
   s.add_dependency "letter_opener_web", "~> 1.3.0"
   s.add_dependency "rspec-html-matchers", "~> 0.9.1"
   s.add_dependency "webmock", "~> 3.0.1"
+  s.add_dependency "puma", "~> 3.8.2"
 end
