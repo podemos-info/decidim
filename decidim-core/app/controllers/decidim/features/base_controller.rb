@@ -40,7 +40,7 @@ module Decidim
       end
 
       def current_participatory_process
-        request.env["decidim.current_participatory_process"]
+        @current_participatory_process ||= Decidim::ParticipatoryProcess.find(params[:participatory_process_id])
       end
 
       def ability_context
