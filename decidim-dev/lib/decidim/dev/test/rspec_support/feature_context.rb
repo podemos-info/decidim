@@ -2,12 +2,14 @@
 
 RSpec.shared_context "feature" do
   let!(:manifest_name) { raise NotImplementedError }
-  let(:manifest) { Decidim.find_feature_manifest(manifest_name) }
+  let!(:manifest) { Decidim.find_feature_manifest(manifest_name) }
 
   let!(:organization) { create(:organization) }
 
-  let(:participatory_process) do
-    create(:participatory_process, :with_steps, organization: organization)
+  let!(:participatory_process) do
+    create(:participatory_process,
+           :with_steps,
+           organization: organization)
   end
 
   let!(:feature) do

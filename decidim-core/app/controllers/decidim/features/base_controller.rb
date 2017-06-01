@@ -32,7 +32,7 @@ module Decidim
       end
 
       def current_feature
-        request.env["decidim.current_feature"]
+        @current_feature ||= Decidim::Feature.find(params[:feature_id])
       end
 
       def current_manifest
