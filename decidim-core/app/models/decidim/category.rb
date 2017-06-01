@@ -9,7 +9,7 @@ module Decidim
     belongs_to :parent, class_name: "Decidim::Category", foreign_key: "parent_id", inverse_of: :subcategories, optional: true
 
     validate :forbid_deep_nesting
-    before_save :subcategories_have_same_process
+    before_validation :subcategories_have_same_process
 
     # Scope to return only the first-class categories, that is, those that are
     # not subcategories.
