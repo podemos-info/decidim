@@ -30,6 +30,9 @@ jobs:
           name: Generate test app
           command: bundle exec rake decidim:generate_test_app
       - run:
+          name: Precompile assets
+          command: cd spec/decidim_dummy_app && bundle exec rake assets:precompile
+      - run:
           name: Run tests
           command: |
             case $CIRCLE_NODE_INDEX in
