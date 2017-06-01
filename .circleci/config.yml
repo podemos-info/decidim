@@ -13,13 +13,20 @@ jobs:
     working_directory: /code
     steps:
       - run:
-          name: Install PhantomJS
+          name: Install Chrome
           command: |
-            curl -OLk https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-            tar xvjf phantomjs-2.1.1-linux-x86_64.tar.bz2
-            mv phantomjs-2.1.1-linux-x86_64 /usr/local/share
-            ln -sf /usr/local/share/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin
-            rm phantomjs-2.1.1-linux-x86_64.tar.bz2
+            apt-get update
+            apt-get install -y zip unzip
+            wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+            echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+            apt-get update && apt-get install -y google-chrome-stable && rm -rf /var/lib/apt/lists/*
+            wget -N http://chromedriver.storage.googleapis.com/2.26/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip
+            chmod +x chromedriver
+            mv -f chromedriver /usr/local/share/chromedriver
+            ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+            ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
+            
       - checkout
       - run:
           name: Install app dependencies

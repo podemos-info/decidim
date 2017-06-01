@@ -21,26 +21,8 @@ module Decidim
   end
 end
 
-capybara_options = {
-  extensions: [
-    File.expand_path(
-      File.join(File.dirname(__FILE__), "phantomjs_polyfills", "promise.js")
-    ),
-    File.expand_path(
-      File.join(File.dirname(__FILE__), "phantomjs_polyfills", "phantomjs-shim.js")
-    )
-  ],
-  js_errors: true,
-  url_whitelist: ["http://*.lvh.me", "localhost", "127.0.0.1"],
-  timeout: 1.minute
-}
-
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, capybara_options)
-end
-
-Capybara.register_driver :debug do |app|
-  Capybara::Poltergeist::Driver.new(app, capybara_options.merge(inspector: true))
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
 Capybara::Screenshot.prune_strategy = :keep_last_run
@@ -48,8 +30,7 @@ Capybara::Screenshot::RSpec.add_link_to_screenshot_for_failed_examples = true
 
 Capybara.configure do |config|
   config.always_include_port = true
-  config.default_driver = :poltergeist
-  config.server = :puma
+  config.default_driver = :chrome
 end
 
 RSpec.configure do |config|

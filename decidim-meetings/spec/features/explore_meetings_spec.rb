@@ -11,6 +11,10 @@ describe "Explore meetings", type: :feature do
     create_list(:meeting, meetings_count, feature: feature)
   end
 
+  it "visits the feature" do
+    visit_feature
+  end
+
   context "index" do
     it "shows all meetings for the given process" do
       visit_feature

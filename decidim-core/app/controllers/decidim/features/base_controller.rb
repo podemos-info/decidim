@@ -22,6 +22,7 @@ module Decidim
       helper Decidim::AttachmentsHelper
 
       helper_method :current_feature,
+                    :current_participatory_process,
                     :current_manifest
 
       skip_authorize_resource
